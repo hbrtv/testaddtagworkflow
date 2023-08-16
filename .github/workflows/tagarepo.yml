@@ -1,0 +1,22 @@
+on:
+  workflow_dispatch
+
+jobs:
+  push-tag-to-repo:
+    runs-on: ubuntu-latest
+    steps:
+       - name: get repo
+         uses: actions/checkout@v3
+         with:
+           repository: hbrtv/xiti.cn
+           sparse-checkout-cone-mode: false
+           sparse-checkout: |
+             README.md
+           fetch-depth: 0
+
+       - name: create tag
+         run: |
+           get tag v1.0
+           git tag
+            
+          
